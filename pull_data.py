@@ -3,16 +3,21 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as sf
 import boto3
 import json
+import logging
 
 SFSCHEMA = 'TIJS'
+spark = None
 
-config = {
-    "spark.jars.packages": "net.snowflake:spark-snowflake_2.12:2.9.0-spark_3.1,net.snowflake:snowflake-jdbc:3.13.3,org.apache.hadoop:hadoop-aws:3.2.0",
-    "spark.hadoop.fs.s3a.aws.credentials.provider": "com.amazonaws.auth.DefaultAWSCredentialsProviderChain"
-}
-conf = SparkConf().setAll(config.items())
-spark = SparkSession.builder.config(conf=conf).getOrCreate()
-spark.sparkContext.setLogLevel("ERROR")
+def init_spark():
+    """Initialize Spark"""
+    config = {
+        "spark.jars.packages": "net.snowflake:spark-snowflake_2.12:2.9.0-spark_3.1,net.snowflake:snowflake-jdbc:3.13.3,org.apache.hadoop:hadoop-aws:3.2.0",
+        "spark.hadoop.fs.s3a.aws.credentials.provider": "com.amazonaws.auth.DefaultAWSCredentialsProviderChain"
+    }
+    conf = SparkConf().setAll(config.items())
+    global spark
+    spark = SparkSession.builder.config(conf=conf).getOrCreate()
+    spark.sparkContext.setLogLevel("ERROR")
 
 def read_data():
     """Read json files from s3 bucket and store in df"""
@@ -80,6 +85,8 @@ def upload_to_snowflake(secret_dict, df):
     df.write.format("snowflake").options(**sfOptions).option("dbtable", "airquality").mode("overwrite").save()
 
 def main():
+    # Init Spark
+    init_spark()
     # Load json
     logging.info('Reading data...')
     df = read_data()
