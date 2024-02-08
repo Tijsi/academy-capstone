@@ -9,12 +9,12 @@ import os
 SFSCHEMA = 'TIJS'
 spark = None
 
-# Sshow logging in stdout as print statements
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s'
-)
-logging.getLogger().addHandler(logging.StreamHandler())
+# Show logging in stdout as print statements
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s | %(levelname)s | %(message)s'
+# )
+# logging.getLogger().addHandler(logging.StreamHandler())
 
 def init_spark():
     """Initialize Spark"""
