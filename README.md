@@ -168,7 +168,8 @@ The team wants you to perform a couple analysis through SQL and build an insight
 Feel free to tackle this however you want and we are here to help!
 
 
-## Sample data
+## Notes
+### Sample data
 `
 {
 	"coordinates": {
@@ -191,3 +192,6 @@ Feel free to tackle this however you want and we are here to help!
 	"value": 1.7
 }
 `
+
+### Build container
+docker build -t pull_air_quality .
