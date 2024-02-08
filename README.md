@@ -166,3 +166,28 @@ The team wants you to perform a couple analysis through SQL and build an insight
 2) Compare the daily max of each metric to its 7-day historic maximum. You will require window functions
 
 Feel free to tackle this however you want and we are here to help!
+
+
+## Sample data
+`
+{
+	"coordinates": {
+		"latitude": 50.904,
+		"longitude": 4.6959
+	},
+	"country": "BE",
+	"date": {
+		"local": "2021-02-02T22:59:53-01:00",
+		"utc": "2021-02-02T23:59:53+00:00"
+	},
+	"entity": "community",
+	"isAnalysis": false,
+	"isMobile": false,
+	"location": "Wilsele-Herent",
+	"locationId": 66110,
+	"parameter": "pm1",
+	"sensorType": "low-cost sensor",
+	"unit": "µg/m³",
+	"value": 1.7
+}
+`
