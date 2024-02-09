@@ -1,0 +1,15 @@
+docker:
+    path: .
+id: 16996851-27f0-4094-992f-33c73caddb09
+ide:
+    filename: ide.yaml
+name: tijs_capstone
+resources:
+    path: resources
+streaming:
+    filename: streaming.yaml
+template: ""
+version: "0.3"
+workflows:
+    path: dags
+    version: "2"

@@ -1,0 +1,5 @@
+boto3
+python-dotenv
+polars
+snowflake-connector-python
+s3fs
